@@ -47,6 +47,7 @@ public class ReadPropertiesServlet extends HttpServlet {
 	}
 
 	private Properties getProperties(String path) throws IOException{
+
 		InputStream inputStream = this.getServletContext().getResourceAsStream(path);
 		Properties properties = new Properties();
 		properties.load(inputStream);

@@ -1,6 +1,8 @@
 package com.mrx.lst;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +30,8 @@ public class HelloServelet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		response.getWriter().append("Hello jon!").append("Served at: ").append(request.getContextPath());
+		//response.setHeader("expires", (System.currentTimeMillis() + 24 * 3600 * 1000) + "");
+		response.getWriter().append("Hello jon!Time is:"+ new Date().toString()).append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

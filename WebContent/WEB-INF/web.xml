@@ -135,4 +135,13 @@
   	<servlet-name>ReadPropertiesServlet</servlet-name>
   	<url-pattern>/porpReader</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ChineseEncoding</servlet-name>
+  	<servlet-class>com.mrx.lst.ChineseEncoding</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ChineseEncoding</servlet-name>
+  	<url-pattern>/encode</url-pattern>
+  </servlet-mapping>  
 </web-app>
