@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>servelet-learn</display-name>
+  
+  <context-param>
+  	<param-name>appName</param-name>
+  	<param-value>I Love Servlet</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>date</param-name>
+  	<param-value>2019年10月16日</param-value>
+  </context-param>
+    <context-param>
+  	<param-name>name</param-name>
+  	<param-value>全局的name</param-value>
+  </context-param>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -16,7 +30,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>HelloServelet</servlet-name>
-  	<url-pattern>/servelet/HelloServelet</url-pattern>
+  	<url-pattern>/abc</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -62,5 +76,63 @@
   <servlet-mapping>
   	<servlet-name>DownLoadServelet</servlet-name>
   	<url-pattern>/servelet/DownLoadServelet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ConfigServlet</servlet-name>
+  	<servlet-class>com.mrx.lst.ConfigServlet</servlet-class>
+  	<init-param>
+  		<param-name>name</param-name>
+  		<param-value>jon</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>age</param-name>
+  		<param-value>18</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>hobby</param-name>
+  		<param-value>cs</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ConfigServlet</servlet-name>
+  	<url-pattern>/config</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>ContextServelet</servlet-name>
+  	<servlet-class>com.mrx.lst.ContextServelet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ContextServelet</servlet-name>
+  	<url-pattern>/context</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>FieldConfigServlet</servlet-name>
+  	<servlet-class>com.mrx.lst.FieldConfigServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>FieldConfigServlet</servlet-name>
+  	<url-pattern>/field</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>DispatcherServlet</servlet-name>
+  	<servlet-class>com.mrx.lst.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DispatcherServlet</servlet-name>
+  	<url-pattern>/dispatcher</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ReadPropertiesServlet</servlet-name>
+  	<servlet-class>com.mrx.lst.ReadPropertiesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ReadPropertiesServlet</servlet-name>
+  	<url-pattern>/porpReader</url-pattern>
   </servlet-mapping>
 </web-app>
