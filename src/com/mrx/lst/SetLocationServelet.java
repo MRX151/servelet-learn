@@ -27,8 +27,9 @@ public class SetLocationServelet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setStatus(302);//300系列的状态码一般用于重定向
-		response.setHeader("Location", "/servelet-learn/servelet/HelloServelet");
+//		response.setStatus(302);//300绯诲垪鐨勭姸鎬佺爜
+//		response.setHeader("Location", "/servelet-learn/servelet/HelloServelet");
+		response.sendRedirect("/servelet-learn/abc");
 	}
 
 	/**

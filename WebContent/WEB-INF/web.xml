@@ -144,4 +144,13 @@
   	<servlet-name>ChineseEncoding</servlet-name>
   	<url-pattern>/encode</url-pattern>
   </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>SessionServlet</servlet-name>
+  	<servlet-class>com.mrx.lst.SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SessionServlet</servlet-name>
+  	<url-pattern>/session</url-pattern>
+  </servlet-mapping> 
 </web-app>

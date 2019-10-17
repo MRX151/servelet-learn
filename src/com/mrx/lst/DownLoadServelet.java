@@ -3,6 +3,7 @@ package com.mrx.lst;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,9 +32,10 @@ public class DownLoadServelet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
         /**
-         * ÉèÖÃcontent-dispositionÏìÓ¦Í·£¬ÈÃä¯ÀÀÆ÷ÏÂÔØÎÄ¼ş
+         * ï¿½ï¿½ï¿½ï¿½content-dispositionï¿½ï¿½Ó¦Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
          */
-        response.setHeader("content-disposition", "attachment;filename=engishNameOnly.png");
+//        response.setHeader("content-disposition", "attachment;filename=engishNameOnly.png");
+		response.setHeader("content-disposition",  "attachment;filename="+URLEncoder.encode("ä¸­æ–‡åç§°", "UTF-8") + ".png");
         InputStream in = this.getServletContext().getResourceAsStream("/static/image/yifabu.png");
         byte buffer[] = new byte[1024];
         int len = 0;
