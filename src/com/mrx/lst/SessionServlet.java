@@ -19,22 +19,46 @@ public class SessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
-		
+
 		HttpSession session = request.getSession();
-		Student stu = (Student)session.getAttribute("stu");
-		
-		if(null == stu) {
-			stu = new Student("jon", 1);
-			session.setAttribute("times", stu);
+		System.out.println("session id = " + session.getId());
+		if(session.isNew()) {
+			System.out.println("创建session");
 		}else {
+			System.out.println("获取session");
+			//手工销毁session
+			session.invalidate();
+			session = request.getSession();
+		}
+		System.out.println("session id = " + session.getId());
+		
+		Student stu = (Student) session.getAttribute("stu");
+
+		if (null == stu) {
+			stu = new Student("jon", 1);
+			session.setAttribute("stu", stu);
+		} else {
 			stu.setAge(stu.getAge() + 1);
 		}
-		response.getWriter().append("您访问了" + stu.getAge() + "次").append(request.getContextPath());
+
+		Object t = session.getAttribute("times");
+		int times;
+		if(null == t) {
+			times = 0;
+		}else {
+			times = (int)t;
+		}
+		times++;
+		session.setAttribute("times", times);
+
+		response.getWriter().append("您访问了" + times + "次").append(request.getContextPath());
 	}
 
 }

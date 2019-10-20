@@ -24,6 +24,10 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <session-config>
+  	<session-timeout>5</session-timeout>
+  </session-config>
+  
   <servlet>
   	<servlet-name>HelloServelet</servlet-name>
   	<servlet-class>com.mrx.lst.HelloServelet</servlet-class>
@@ -153,4 +157,31 @@
   	<servlet-name>SessionServlet</servlet-name>
   	<url-pattern>/session</url-pattern>
   </servlet-mapping> 
+  
+  <servlet>
+  	<servlet-name>RequestInfoServlet</servlet-name>
+  	<servlet-class>com.mrx.lst.RequestInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RequestInfoServlet</servlet-name>
+  	<url-pattern>/request</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+  	<servlet-name>CodeImageServlet</servlet-name>
+  	<servlet-class>com.mrx.sps.CodeImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CodeImageServlet</servlet-name>
+  	<url-pattern>/code_image</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+  	<servlet-name>ValiddateServlet</servlet-name>
+  	<servlet-class>com.mrx.sps.ValiddateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ValiddateServlet</servlet-name>
+  	<url-pattern>/validate_code</url-pattern>
+  </servlet-mapping>
 </web-app>

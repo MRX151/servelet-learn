@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="static/image/favicon.ico" type="image/x-icon" />
+<title>欢迎页</title>
 </head>
 <body>
-<h1>Hello Jon!</h1>
+	<h1>Hello Jon!这是欢迎页Index.jsp</h1>
+	<a href="/servelet-learn/login.jsp">跳转到登录页</a>
 </body>
 </html>
