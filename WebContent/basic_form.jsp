@@ -17,7 +17,8 @@
   </head>
   
   <body>
-      <form action="${pageContext.request.contextPath}/sleep_form" onsubmit="return doCommit()" method="post">
+      <form action="${pageContext.request.contextPath}/do_basic_form" onsubmit="return doCommit()" method="post">
+      <input type="hidden" name="token" value="${token}"/> 
         用户名：<input type="text" name="username">
         <input type="submit" value="提交" id="submit">
     </form>

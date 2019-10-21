@@ -17,7 +17,7 @@ public class TokenFactory {
 	 */
 	private TokenFactory() {}
 	private static final TokenFactory instance = new TokenFactory();
-	public static TokenFactory GetInstance() { return instance;}
+	public static TokenFactory getInstance() { return instance;}
 	
     /**
      * 生成Token
@@ -40,7 +40,7 @@ public class TokenFactory {
     }
 	
 	public static void main(String[] args) {
-		TokenFactory tokenFactory = TokenFactory.GetInstance();
+		TokenFactory tokenFactory = TokenFactory.getInstance();
 		System.out.println(tokenFactory.makeToken());
 	}
 }

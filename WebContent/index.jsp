@@ -8,7 +8,9 @@
 <title>欢迎页</title>
 </head>
 <body>
+	<%@ include file="/jsp-learn/header.jspf" %>
 	<h1>Hello Jon!这是欢迎页Index.jsp</h1>
 	<a href="/servelet-learn/login.jsp">跳转到登录页</a>
+	<%@ include file="/jsp-learn/foot.jspf" %>
 </body>
 </html>

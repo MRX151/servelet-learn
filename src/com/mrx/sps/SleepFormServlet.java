@@ -24,7 +24,7 @@ public class SleepFormServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		System.out.println("收到表单请求，username=" + request.getParameter("username") + new Date().toString());
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
