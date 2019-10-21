@@ -18,7 +18,7 @@ public class JdbcDemo {
         //要连接的数据库URL
         //String url = "jdbc:mysql://localhost:3306/mydatabase?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
 		//如果是本地默认端口号，可以不写
-        String url = "jdbc:mysql:///mydatabase?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
+        String url = "jdbc:mysql:///mydatabase?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
         //连接的数据库时使用的用户名
         String username = "root";
         //连接的数据库时使用的密码
