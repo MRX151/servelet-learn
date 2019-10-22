@@ -12,7 +12,9 @@ public class JdbcBatch {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		JdbcBatch jdbcBatch = new JdbcBatch();
-		jdbcBatch.batch();
+//		jdbcBatch.batch();
+//		jdbcBatch.batch_prepared();
+		jdbcBatch.auto_generate_keys();
 	}
 
 	public void batch() {
@@ -60,12 +62,53 @@ public class JdbcBatch {
 			statement.setString(3, "jon123");
 			statement.addBatch();//每次addBatch()后都会刷新
 			
+			//添加要批量执行的SQL,建议放在for循环中
+			statement.setInt(1, 3);
+			statement.setString(2, "jon");
+			statement.setString(3, "jon123");
+			statement.addBatch();
 			
+			//添加要批量执行的SQL,建议放在for循环中
+			statement.setInt(1, 4);
+			statement.setString(2, "jon");
+			statement.setString(3, "jon123");
+			statement.addBatch();
 			
 			//执行批处理SQL语句
 			int[] result = statement.executeBatch();
+			
 			//清除批处理命令
 			statement.clearBatch();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			jdbcUtil.release(connection, statement, resultSet);
+		}
+	}
+	
+	public void auto_generate_keys() {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = jdbcUtil.getConnection();
+			String sql = "insert into user(username,password) values(?,?)";
+			
+			statement = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			//添加要批量执行的SQL,建议放在for循环中
+			statement.setString(1, "jon");
+			statement.setString(2, "jon123");
+			
+			int update = statement.executeUpdate();
+			resultSet = statement.getGeneratedKeys();
+			
+			while(resultSet.next()) {
+				System.out.println("id:"+resultSet.getInt(1));
+			}
+			
 			
 		} catch (Exception e) {
 			// TODO: handle exception
