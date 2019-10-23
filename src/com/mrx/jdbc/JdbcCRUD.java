@@ -2,6 +2,7 @@ package com.mrx.jdbc;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ParameterMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -117,6 +118,10 @@ public class JdbcCRUD {
 			statement.setDate(3, new java.sql.Date(formatter.parse("2019-10-22").getTime()));
 			statement.setInt(4, 2);
 			statement.setString(5, "GRADE_TWO");
+			
+			//PreparedStatement的元数据
+			ParameterMetaData metaData = statement.getParameterMetaData();
+			System.out.println(metaData.getParameterCount() + "");
 			
 			int num = statement.executeUpdate();
 			System.out.println("执行成功，生效行数：" + num + ",释放资源");

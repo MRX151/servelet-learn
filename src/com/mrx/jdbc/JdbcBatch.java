@@ -14,7 +14,6 @@ public class JdbcBatch {
 		JdbcBatch jdbcBatch = new JdbcBatch();
 //		jdbcBatch.batch();
 //		jdbcBatch.batch_prepared();
-		jdbcBatch.auto_generate_keys();
 	}
 
 	public void batch() {
@@ -88,33 +87,5 @@ public class JdbcBatch {
 		}
 	}
 	
-	public void auto_generate_keys() {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		
-		try {
-			connection = jdbcUtil.getConnection();
-			String sql = "insert into user(username,password) values(?,?)";
-			
-			statement = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-			//添加要批量执行的SQL,建议放在for循环中
-			statement.setString(1, "jon");
-			statement.setString(2, "jon123");
-			
-			int update = statement.executeUpdate();
-			resultSet = statement.getGeneratedKeys();
-			
-			while(resultSet.next()) {
-				System.out.println("id:"+resultSet.getInt(1));
-			}
-			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}finally {
-			jdbcUtil.release(connection, statement, resultSet);
-		}
-	}
+
 }

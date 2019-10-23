@@ -3,12 +3,15 @@ package com.mrx.jdbc;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
 public class JdbcUtil {
+	
+	private static JdbcDataSource dataSource = new JdbcDataSource();
 	
 	private static String driver;
 	private static String url;
@@ -36,9 +39,17 @@ public class JdbcUtil {
 			throw new ExceptionInInitializerError(e);
 		}
 	}
-	
+	/**
+	 * 基础方式获取连接
+	 * @return
+	 * @throws SQLException
+	 */
 	public Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(url,username,password);
+	}
+	
+	public static Connection getConnectionFromDataSource() throws SQLException {
+		return dataSource.getConnection();
 	}
 	
     public static void release(Connection conn,Statement st,ResultSet rs){
@@ -69,5 +80,21 @@ public class JdbcUtil {
             }
         }
     }
-	
+
+    public static int update(String sql,String[] params) {
+    	
+    	Connection connection = null;
+    	PreparedStatement statement = null;
+    	
+    	try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			
+		}
+    	
+    	
+    	return -1;
+    }
 }
