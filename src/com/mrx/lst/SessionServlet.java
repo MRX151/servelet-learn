@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mrx.entity.Student;
+import com.mrx.entity.Stu;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
@@ -39,10 +39,10 @@ public class SessionServlet extends HttpServlet {
 		}
 		System.out.println("session id = " + session.getId());
 		
-		Student stu = (Student) session.getAttribute("stu");
+		Stu stu = (Stu) session.getAttribute("stu");
 
 		if (null == stu) {
-			stu = new Student("jon", 1);
+			stu = new Stu("jon", 1);
 			session.setAttribute("stu", stu);
 		} else {
 			stu.setAge(stu.getAge() + 1);

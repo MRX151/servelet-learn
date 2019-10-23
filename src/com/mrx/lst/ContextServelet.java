@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mrx.entity.Student;
+import com.mrx.entity.Stu;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
@@ -49,9 +49,9 @@ public class ContextServelet extends HttpServlet {
 		
 		//通过config获取context
 		ServletContext context = this.config.getServletContext();
-		Student student = (Student) context.getAttribute("stu");
+		Stu student = (Stu) context.getAttribute("stu");
 		if(null == student) {
-			student = new Student("小明", 18);
+			student = new Stu("小明", 18);
 			context.setAttribute("stu", student);
 		}
 		student.setAge(student.getAge() + 1);
