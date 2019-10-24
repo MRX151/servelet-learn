@@ -1,196 +1,253 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>servelet-learn</display-name>
-  
-  <context-param>
-  	<param-name>appName</param-name>
-  	<param-value>I Love Servlet</param-value>
-  </context-param>
-  <context-param>
-  	<param-name>date</param-name>
-  	<param-value>2019年10月16日</param-value>
-  </context-param>
-    <context-param>
-  	<param-name>name</param-name>
-  	<param-value>全局的name</param-value>
-  </context-param>
-  
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  
-  <session-config><!-- 设置session存续时间 -->
-  	<session-timeout>5</session-timeout>
-  </session-config>
-  
-  <error-page>
-  	<error-code>404</error-code>
-  	<location>/jsp-learn/404.jsp</location>
-  </error-page>
-  <error-page>
-  	<error-code>500</error-code>
-  	<location>/jsp-learn/500.jsp</location>
-  </error-page>
-  
-  <servlet>
-  	<servlet-name>HelloServelet</servlet-name>
-  	<servlet-class>com.mrx.lst.HelloServelet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>HelloServelet</servlet-name>
-  	<url-pattern>/abc</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>SetLocationServelet</servlet-name>
-  	<servlet-class>com.mrx.lst.SetLocationServelet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>SetLocationServelet</servlet-name>
-  	<url-pattern>/servelet/SetLocationServelet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>GzipServelet</servlet-name>
-  	<servlet-class>com.mrx.lst.GzipServelet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>GzipServelet</servlet-name>
-  	<url-pattern>/servelet/GzipServelet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>ImgServelet</servlet-name>
-  	<servlet-class>com.mrx.lst.ImgServelet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>ImgServelet</servlet-name>
-  	<url-pattern>/servelet/ImgServelet</url-pattern>
-  </servlet-mapping>
- 
-  <servlet>
-  	<servlet-name>FreshServelet</servlet-name>
-  	<servlet-class>com.mrx.lst.FreshServelet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>FreshServelet</servlet-name>
-  	<url-pattern>/servelet/FreshServelet</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>servelet-learn</display-name>
 
-  <servlet>
-  	<servlet-name>DownLoadServelet</servlet-name>
-  	<servlet-class>com.mrx.lst.DownLoadServelet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>DownLoadServelet</servlet-name>
-  	<url-pattern>/servelet/DownLoadServelet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>ConfigServlet</servlet-name>
-  	<servlet-class>com.mrx.lst.ConfigServlet</servlet-class>
-  	<init-param>
-  		<param-name>name</param-name>
-  		<param-value>jon</param-value>
-  	</init-param>
-  	<init-param>
-  		<param-name>age</param-name>
-  		<param-value>18</param-value>
-  	</init-param>
-  	<init-param>
-  		<param-name>hobby</param-name>
-  		<param-value>cs</param-value>
-  	</init-param>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>ConfigServlet</servlet-name>
-  	<url-pattern>/config</url-pattern>
-  </servlet-mapping>
-  
-  
-  <servlet>
-  	<servlet-name>ContextServelet</servlet-name>
-  	<servlet-class>com.mrx.lst.ContextServelet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>ContextServelet</servlet-name>
-  	<url-pattern>/context</url-pattern>
-  </servlet-mapping>
+	<context-param>
+		<param-name>appName</param-name>
+		<param-value>I Love Servlet</param-value>
+	</context-param>
+	<context-param>
+		<param-name>date</param-name>
+		<param-value>2019年10月16日</param-value>
+	</context-param>
+	<context-param>
+		<param-name>name</param-name>
+		<param-value>全局的name</param-value>
+	</context-param>
 
-  <servlet>
-  	<servlet-name>FieldConfigServlet</servlet-name>
-  	<servlet-class>com.mrx.lst.FieldConfigServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>FieldConfigServlet</servlet-name>
-  	<url-pattern>/field</url-pattern>
-  </servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
 
-  <servlet>
-  	<servlet-name>DispatcherServlet</servlet-name>
-  	<servlet-class>com.mrx.lst.DispatcherServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>DispatcherServlet</servlet-name>
-  	<url-pattern>/dispatcher</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>ReadPropertiesServlet</servlet-name>
-  	<servlet-class>com.mrx.lst.ReadPropertiesServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>ReadPropertiesServlet</servlet-name>
-  	<url-pattern>/porpReader</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>ChineseEncoding</servlet-name>
-  	<servlet-class>com.mrx.lst.ChineseEncoding</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>ChineseEncoding</servlet-name>
-  	<url-pattern>/encode</url-pattern>
-  </servlet-mapping>  
-  
-  <servlet>
-  	<servlet-name>SessionServlet</servlet-name>
-  	<servlet-class>com.mrx.lst.SessionServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>SessionServlet</servlet-name>
-  	<url-pattern>/session</url-pattern>
-  </servlet-mapping> 
-  
-  <servlet>
-  	<servlet-name>RequestInfoServlet</servlet-name>
-  	<servlet-class>com.mrx.lst.RequestInfoServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>RequestInfoServlet</servlet-name>
-  	<url-pattern>/request</url-pattern>
-  </servlet-mapping> 
-  
-  <servlet>
-  	<servlet-name>CodeImageServlet</servlet-name>
-  	<servlet-class>com.mrx.sps.CodeImageServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>CodeImageServlet</servlet-name>
-  	<url-pattern>/code_image</url-pattern>
-  </servlet-mapping> 
-  
-  <servlet>
-  	<servlet-name>ValiddateServlet</servlet-name>
-  	<servlet-class>com.mrx.sps.ValiddateServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>ValiddateServlet</servlet-name>
-  	<url-pattern>/validate_code</url-pattern>
-  </servlet-mapping>
+	<session-config><!-- 设置session存续时间 -->
+		<session-timeout>1</session-timeout>
+	</session-config>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp-learn/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/jsp-learn/500.jsp</location>
+	</error-page>
+
+	<listener>
+		<description>ServletContext监听器</description>
+		<listener-class>com.mrx.mst.MyServletContextListener</listener-class>
+	</listener>
+
+	<listener>
+		<description>HttpSession监听器</description>
+		<listener-class>com.mrx.mst.MyHttpSessionListener</listener-class>
+	</listener>
+
+	<listener>
+		<description>MyServletRequest监听器</description>
+		<listener-class>com.mrx.mst.MyServletRequestListener</listener-class>
+	</listener>
+
+	<filter>
+		<description>第一个Filter</description>
+		<filter-name>HelloFilter</filter-name>
+		<filter-class>com.mrx.lst.HelloFilter</filter-class>
+		<init-param>
+			<description>测试配置name参数</description>
+			<param-name>name</param-name>
+			<param-value>熊</param-value>
+		</init-param>
+		<init-param>
+			<description>测试配置age参数</description>
+			<param-name>age</param-name>
+			<param-value>20</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>HelloFilter</filter-name>
+		<url-pattern>/abc</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.mrx.mst.CharacterEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>SecondFilter</filter-name>
+		<filter-class>com.mrx.mst.SecondFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SecondFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>HelloServelet</servlet-name>
+		<servlet-class>com.mrx.lst.HelloServelet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServelet</servlet-name>
+		<url-pattern>/abc</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SetLocationServelet</servlet-name>
+		<servlet-class>com.mrx.lst.SetLocationServelet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SetLocationServelet</servlet-name>
+		<url-pattern>/servelet/SetLocationServelet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GzipServelet</servlet-name>
+		<servlet-class>com.mrx.lst.GzipServelet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GzipServelet</servlet-name>
+		<url-pattern>/servelet/GzipServelet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ImgServelet</servlet-name>
+		<servlet-class>com.mrx.lst.ImgServelet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImgServelet</servlet-name>
+		<url-pattern>/servelet/ImgServelet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FreshServelet</servlet-name>
+		<servlet-class>com.mrx.lst.FreshServelet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreshServelet</servlet-name>
+		<url-pattern>/servelet/FreshServelet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DownLoadServelet</servlet-name>
+		<servlet-class>com.mrx.lst.DownLoadServelet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownLoadServelet</servlet-name>
+		<url-pattern>/servelet/DownLoadServelet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ConfigServlet</servlet-name>
+		<servlet-class>com.mrx.lst.ConfigServlet</servlet-class>
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>jon</param-value>
+		</init-param>
+		<init-param>
+			<param-name>age</param-name>
+			<param-value>18</param-value>
+		</init-param>
+		<init-param>
+			<param-name>hobby</param-name>
+			<param-value>cs</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ConfigServlet</servlet-name>
+		<url-pattern>/config</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ContextServelet</servlet-name>
+		<servlet-class>com.mrx.lst.ContextServelet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ContextServelet</servlet-name>
+		<url-pattern>/context</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FieldConfigServlet</servlet-name>
+		<servlet-class>com.mrx.lst.FieldConfigServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FieldConfigServlet</servlet-name>
+		<url-pattern>/field</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>com.mrx.lst.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>/dispatcher</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ReadPropertiesServlet</servlet-name>
+		<servlet-class>com.mrx.lst.ReadPropertiesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReadPropertiesServlet</servlet-name>
+		<url-pattern>/porpReader</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ChineseEncoding</servlet-name>
+		<servlet-class>com.mrx.lst.ChineseEncoding</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChineseEncoding</servlet-name>
+		<url-pattern>/encode</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SessionServlet</servlet-name>
+		<servlet-class>com.mrx.lst.SessionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SessionServlet</servlet-name>
+		<url-pattern>/session</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RequestInfoServlet</servlet-name>
+		<servlet-class>com.mrx.lst.RequestInfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RequestInfoServlet</servlet-name>
+		<url-pattern>/request</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CodeImageServlet</servlet-name>
+		<servlet-class>com.mrx.sps.CodeImageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CodeImageServlet</servlet-name>
+		<url-pattern>/code_image</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ValiddateServlet</servlet-name>
+		<servlet-class>com.mrx.sps.ValiddateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ValiddateServlet</servlet-name>
+		<url-pattern>/validate_code</url-pattern>
+	</servlet-mapping>
 </web-app>
