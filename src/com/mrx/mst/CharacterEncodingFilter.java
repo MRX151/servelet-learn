@@ -41,7 +41,7 @@ public class CharacterEncodingFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String url = ((HttpServletRequest)request).getRequestURL().toString();
-		System.out.println("character filter 被触发，即将访问："+url);
+//		System.out.println("character filter 被触发，即将访问："+url);
 		
 		String charset = this.config.getInitParameter("charset");
 		if(null == charset) {

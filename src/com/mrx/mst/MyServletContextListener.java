@@ -7,11 +7,11 @@ public class MyServletContextListener implements ServletContextListener{
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("ServletContext对象创建");
+//        System.out.println("ServletContext对象创建");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("ServletContext对象销毁");
+//        System.out.println("ServletContext对象销毁");
     }
 }

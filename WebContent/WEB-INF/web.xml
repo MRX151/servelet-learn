@@ -94,6 +94,30 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<filter>
+		<filter-name>AnnotationHandlerFilter</filter-name>
+		<filter-class>com.mrx.annotations.AnnotationHandlerFilter</filter-class>
+		<init-param>
+			<description>要读取的包，通过英文逗号隔开</description>
+			<param-name>packagenames</param-name>
+			<param-value>com.mrx.annotations</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>AnnotationHandlerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<description>尝试模拟spring mvc</description>
+		<filter-name>MVCFilter</filter-name>
+		<filter-class>com.mrx.finalmvc.MVCFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>MVCFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<servlet>
 		<servlet-name>HelloServelet</servlet-name>
 		<servlet-class>com.mrx.lst.HelloServelet</servlet-class>

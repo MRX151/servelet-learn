@@ -2,11 +2,14 @@ package com.mrx.annotations;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 public class ScanClassUtil {
 	
@@ -35,7 +38,18 @@ public class ScanClassUtil {
 				} else if ("jar".equals(protocol)) {
 					// 如果是jar包文件
 					// 定义一个JarFile
-					
+					JarFile jar;
+					try {
+						jar = ((JarURLConnection)url.openConnection()).getJarFile();//获取jar包
+						Enumeration<JarEntry> entries =  jar.entries();//获取jar包中所有的目录和文件
+						while (entries.hasMoreElements()) {
+							JarEntry jarEntry = (JarEntry) entries.nextElement();
+							String name = jarEntry.getName();//可以理解为相对路径
+							
+						}
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -93,5 +107,14 @@ public class ScanClassUtil {
                 }
             }
         }
+    }
+
+    public static void main(String[] args) {
+    	String pack = "com.mrx.annotations";
+    	Set<Class<?>> clazzs = getClasses(pack);
+    	System.out.println("扫描完成，得到如下class：");
+    	for (Class<?> class1 : clazzs) {
+			System.out.println(class1);
+		}
     }
 }

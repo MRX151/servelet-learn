@@ -39,7 +39,7 @@ public class SecondFilter implements Filter {
 		// place your code here
 
 		// pass the request along the filter chain
-		System.out.println("SecondFilter 被触发");
+//		System.out.println("SecondFilter 被触发");
 		SecondRequestDecorator sDecorator = new SecondRequestDecorator((HttpServletRequest) request);
 		chain.doFilter(sDecorator, response);
 	}
