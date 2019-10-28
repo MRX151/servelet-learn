@@ -9,6 +9,8 @@ public class ClassController {
 	
 	@RequestMapping(value = "/test")
 	public String testClass() {
+		
 		return "classController say hello!";
+		
 	}
 }

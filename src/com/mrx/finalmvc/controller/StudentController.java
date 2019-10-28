@@ -12,4 +12,8 @@ public class StudentController {
 		return "hello world!——StudentController";
 	}
 
+	@RequestMapping(value = "/test")
+	public String test() {
+		return "test student";
+	}
 }

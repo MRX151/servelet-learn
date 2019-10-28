@@ -2,6 +2,7 @@ package com.mrx.finalmvc;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,8 +18,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet Filter implementation class MVCFilter
@@ -27,13 +28,13 @@ import javax.servlet.annotation.WebFilter;
 public class MVCFilter implements Filter {
 
 	FilterConfig filterConfig;
-	
-    /**
-     * Default constructor. 
-     */
-    public MVCFilter() {
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * Default constructor.
+	 */
+	public MVCFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -45,12 +46,26 @@ public class MVCFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
+		HttpServletRequest hsRequest = (HttpServletRequest) request;
+		HttpServletResponse hsResponse = (HttpServletResponse) response;
+		Map<String, Method> url_method = (Map<String, Method>) this.filterConfig.getServletContext()
+				.getAttribute("url_method");
+		Map<Method, Object> method_obj = (Map<Method, Object>) this.filterConfig.getServletContext()
+				.getAttribute("method_obj");
 
-		// pass the request along the filter chain
-		chain.doFilter(request, response);
+		String uri = hsRequest.getRequestURI();
+		Method m = url_method.get(uri);
+		Object obj = null;
+		if (null != m && (obj = method_obj.get(m)) != null) {
+			ControllerUti.handleRequest(hsRequest, hsResponse, m, obj);
+		} else {
+			chain.doFilter(request, response);
+		}
+
 	}
 
 	/**
@@ -59,7 +74,7 @@ public class MVCFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 		this.filterConfig = fConfig;
-		//1.通过properties配置文件获取要扫描的包
+		// 1.通过properties配置文件获取要扫描的包
 		Properties properties = new Properties();
 		InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties");
 		try {
@@ -68,33 +83,32 @@ public class MVCFilter implements Filter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		String packages = properties.getProperty("packages");
-		if(null != packages && packages.length() > 0) {
-			
+		if (null != packages && packages.length() > 0) {
+
 			Map<String, Method> url_method = new HashMap<>();
-			Map<Method, Object> method_obj = new HashMap<>();			
+			Map<Method, Object> method_obj = new HashMap<>();
 			String contextPath = this.filterConfig.getServletContext().getContextPath();
-			
-			
+
 			Set<Class<?>> set = new HashSet<>();
 			String[] packs = packages.split(",");
-			for(String pack:packs) {//把所有的class都加载到set中去
+			for (String pack : packs) {// 把所有的class都加载到set中去
 				ScannerUti.scan(pack, set);
 			}
-			for(Class<?> clazz : set) {//遍历set
-				if(true == clazz.isAnnotationPresent(Controller.class) 
+			for (Class<?> clazz : set) {// 遍历set
+				if (true == clazz.isAnnotationPresent(Controller.class)
 						&& true == clazz.isAnnotationPresent(RequestMapping.class)) {
 					try {
 						String url = contextPath;
-						
+
 						Object obj = clazz.newInstance();
 						RequestMapping anno = clazz.getAnnotation(RequestMapping.class);
 						url += anno.value();
-						
+
 						Method[] methods = clazz.getDeclaredMethods();
-						for(Method m :methods) {
-							if(true == m.isAnnotationPresent(RequestMapping.class)) {
+						for (Method m : methods) {
+							if (true == m.isAnnotationPresent(RequestMapping.class)) {
 								RequestMapping manno = m.getAnnotation(RequestMapping.class);
 								String final_url = url + manno.value();
 								url_method.put(final_url, m);
@@ -105,12 +119,13 @@ public class MVCFilter implements Filter {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-					
+
 				}
 			}
-			System.out.println("加载完毕，url_method："+url_method);
-			System.out.println("加载完毕，method_obj："+method_obj);
+//			System.out.println("加载完毕，url_method："+url_method);
+//			System.out.println("加载完毕，method_obj："+method_obj);
+			this.filterConfig.getServletContext().setAttribute("url_method", url_method);
+			this.filterConfig.getServletContext().setAttribute("method_obj", method_obj);
 		}
 	}
 }
